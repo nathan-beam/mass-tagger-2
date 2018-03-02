@@ -1,0 +1,49 @@
+﻿<script>
+    $(function () {
+        $("#subredditSorter").sortable();
+        $("#subredditSorter").disableSelection();
+    });
+</script>
+<style>
+    #subredditSorter {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        max-width: 500px;
+        max-height: 450px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+        #subredditSorter li {
+            margin: 0 3px 3px 3px;
+            padding-left: 1.5em;
+            padding-top: 5px;
+            height: 30px;
+        }
+
+            #subredditSorter li span {
+                position: absolute;
+                margin-left: -1.3em;
+            }
+</style>
+<!-- ko with: home -->
+@model MassTagger2.Models.ViewModels.HomeViewModel
+<div id="result"></div>
+
+
+@using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <ul id="subredditSorter" style="list-style-type: none" class="ui-sortable">
+
+        @foreach (MassTagger2.Models.ViewModels.SubredditViewModel subreddit in Model.Subreddits)
+        {
+            Html.RenderPartial("_SubredditSorter", subreddit);
+        }
+    </ul>
+
+    <input type="file" , name="JsonFile" />
+    <input type="submit" value="OK" />
+}
+
+<!-- /ko -->

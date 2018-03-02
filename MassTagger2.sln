@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MassTagger2", "MassTagger2.0\MassTagger2.csproj", "{0C422832-D4F5-4BD3-9C2F-A3B02DA9FE8D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C422832-D4F5-4BD3-9C2F-A3B02DA9FE8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C422832-D4F5-4BD3-9C2F-A3B02DA9FE8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C422832-D4F5-4BD3-9C2F-A3B02DA9FE8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C422832-D4F5-4BD3-9C2F-A3B02DA9FE8D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C72D033C-6D3B-4D43-9573-0987CE06E52C}
+	EndGlobalSection
+EndGlobal
