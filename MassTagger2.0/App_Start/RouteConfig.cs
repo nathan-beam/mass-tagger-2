@@ -14,6 +14,12 @@ namespace MassTagger2
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "User",
+                "User/{userId}",
+                new { controller = "User", action = "Index" },
+                new { userId = @"\w+" }
+            );
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

@@ -10,5 +10,9 @@ namespace MassTagger2.Models.ViewModels
         public HttpPostedFileBase JsonFile { get; set; }
 
         public IEnumerable<SubredditViewModel> Subreddits { get; set; }
+
+        public int MinimumPosts { get; set; }
+
+        public bool Overwrite { get; set; }
     }
 }

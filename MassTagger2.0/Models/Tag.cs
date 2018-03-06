@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,7 +8,8 @@ namespace MassTagger2.Models
 {
     public class Tag
     {
-        public string name { get; set; }
+        [JsonIgnoreAttribute]
+        public string Name { get; set; }
 
         public string color { get; set; }
 

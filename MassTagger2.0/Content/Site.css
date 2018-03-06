@@ -62,3 +62,11 @@ textarea {
     margin: 0 1em 1em 0;
     height: 50px;
 }
+
+legend {
+    padding-top: 10vh;
+}
+
+.removeRow {
+    cursor: pointer;
+}

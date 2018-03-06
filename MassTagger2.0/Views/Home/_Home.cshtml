@@ -2,9 +2,9 @@
     #subredditSorter {
         list-style-type: none;
         margin: 0;
-        padding: 0;
+        padding: 3px;
         max-width: 500px;
-        height: 80vh;
+        height: 75vh;
         overflow-y: scroll;
         overflow-x: hidden;
         background-color: lightgray;
@@ -27,20 +27,63 @@
 <div id="result"></div>
 
 
-@using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "mtForm" }))
 {
     <div>
         <h1>Reddit Masstagger 2.0</h1>
-        <p>
-            Use the list to the left to sort and customize your subreddit filter. Higher subreddits will be
-            prioritized in the case that a user is tagged in multiple subreddits. Choose ignore to block all
-            posts and comments by users of that subreddit
-        </p>
     </div>
     <div class="row">
         <div class="col-lg-6">
-            <input type="file" , name="JsonFile" />
-            <input type="submit" value="OK" />
+            <h4>
+                Use the list to the left to sort and customize your subreddit filter. Higher subreddits will be
+                prioritized in the case that a user is tagged in multiple subreddits. Choose ignore to block all
+                posts and comments by users of that subreddit
+            </h4>
+            <div>
+                <fieldset>
+                    <legend>Options</legend>
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h4>Minimum posts for tag:</h4>
+                        </div>
+                        <div class="col-md-3" style="padding-top:7px">
+                            @Html.EditorFor(mod => mod.MinimumPosts, new { htmlAttributes = new { min = 1 } })
+                        </div>
+                    </div>
+                    <div class="row" style="background-color:lightgrey">
+                        <div class="col-md-5">
+                            <h4>
+                                Ignore all:
+                            </h4>
+                        </div>
+                        <div class="col-md-3" style="padding-top:7px">
+                            <input type="checkbox" , id="IgnoreAll" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h4>
+                                Overwrite current tags:
+                            </h4>
+                        </div>
+                        <div class="col-md-3" style="padding-top:7px">
+                            @Html.EditorFor(mod=>Model.Overwrite)
+                        </div>
+                    </div>
+                    <div class="row" style="background-color:lightgray">
+                        <div class="col-md-5">
+                            <h4>Upload RES Backup file:</h4>
+                        </div>
+                        <div class="col-md-3" style="padding-top:7px">
+                            <input type="file" , name="JsonFile" accept=".resbackup" />
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top:7px">
+                        <input type="submit" value="Submit" />
+                    </div>
+                </fieldset>
+            </div>
         </div>
         <div class="col-lg-6">
             <div>
@@ -65,6 +108,18 @@
     $(".removeRow").click(function () {
         $(this).parent().parent().parent().remove();
     })
+
+    $("#mtForm").validate({
+        rules: { JsonFile: { required: true} },
+        messages: { JsonFile: "File must be an RES backup file" }
+    });
+
+    $('#IgnoreAll').click(function () {
+        var checked = $(this).prop('checked')
+        $("#subredditSorter").find("input[type='checkbox']")
+            .prop('checked', checked)
+    })
+
 </script>
 
 <!-- /ko -->

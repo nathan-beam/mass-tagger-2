@@ -1,0 +1,25 @@
+﻿@model MassTagger2.Models.RedditUser
+<body>
+    <h1>@Model.Username</h1>
+    <div id="accordion">
+        @foreach (var subreddit in Model.SubredditUsers)
+        {
+            <h3>@subreddit.Subreddit.SubName</h3>
+            <div>
+                @foreach(var post in subreddit.Posts)
+                {
+                    var url = String.Format("{0}{1}", "http://www.reddit.com", post.Url);
+                    <div class="row">
+                        <a href="@url">@url</a>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+
+    <script>
+        $(function () {
+            $("#accordion").accordion();
+        });
+    </script>
+</body>

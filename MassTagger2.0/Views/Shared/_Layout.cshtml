@@ -14,6 +14,8 @@
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
             integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
             crossorigin="anonymous"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"
+            type="text/javascript"></script>
     @RenderSection("Scripts", required: false)
 </head>
 <body>
@@ -30,7 +32,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("About", "Index", "About", new { area = "HelpPage" }, null)</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
                 </ul>
             </div>
         </div>

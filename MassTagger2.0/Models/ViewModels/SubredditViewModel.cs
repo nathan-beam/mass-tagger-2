@@ -15,6 +15,5 @@ namespace MassTagger2.Models.ViewModels
         public TagColor TagColor { get; set; }
 
         public bool Ignored { get; set; }
-
     }
 }

@@ -5,9 +5,9 @@
     {
         <div class="row">
             <div class="col-sm-1">
-                <input type="button" value="X" class="removeRow"/>
+                <img src="~/Content/Images/delete.png" alt="Remove" height="20" width="20" class="removeRow" />
             </div>
-            <div class="col-sm-4">@Model.Name @Html.HiddenFor(model=>model.Name)</div>
+            <div class="col-sm-4">@Model.Name @Html.HiddenFor(model=>model.Name) @Html.HiddenFor(model=>model.Id)</div>
             <div class="col-sm-3">Ignore: @Html.EditorFor(model => model.Ignored)</div>
             <div class="col-sm-3">@Html.EnumDropDownListFor(model=>model.TagColor)</div>
         </div>
