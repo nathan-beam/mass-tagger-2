@@ -27,7 +27,6 @@ namespace MassTagger2.Controllers
                         var svm = new SubredditViewModel
                         {
                             Name = subreddit.SubName,
-                            Count = count,
                             Ignored = false,
                             TagColor = Util.Enum.TagColor.red
                         };
@@ -41,17 +40,6 @@ namespace MassTagger2.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(Subreddit sub)
-        {
-            using (MassTaggerContext mt = new MassTaggerContext())
-            {
-                mt.Subreddits.Add(sub);
-                mt.SaveChanges();
-            }
-            return Redirect("/");
-        }
-
-        [HttpPost]
         public ActionResult Upload(HomeViewModel vm)
         {
             BinaryReader b = new BinaryReader(vm.JsonFile.InputStream);
@@ -60,6 +48,11 @@ namespace MassTagger2.Controllers
             string result = System.Text.Encoding.UTF8.GetString(binData);
             var jobj = JObject.Parse(result);
             return Content(result);
+        }
+
+        public ActionResult About()
+        {
+            return View();
         }
     }
 }

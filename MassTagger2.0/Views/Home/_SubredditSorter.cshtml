@@ -4,7 +4,9 @@
     @using (Html.BeginCollectionItem("Subreddits"))
     {
         <div class="row">
-            <div class="col-sm-1"></div>
+            <div class="col-sm-1">
+                <input type="button" value="X" class="removeRow"/>
+            </div>
             <div class="col-sm-4">@Model.Name @Html.HiddenFor(model=>model.Name)</div>
             <div class="col-sm-3">Ignore: @Html.EditorFor(model => model.Ignored)</div>
             <div class="col-sm-3">@Html.EnumDropDownListFor(model=>model.TagColor)</div>

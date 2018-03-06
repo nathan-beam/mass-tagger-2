@@ -1,18 +1,13 @@
-﻿<script>
-    $(function () {
-        $("#subredditSorter").sortable();
-        $("#subredditSorter").disableSelection();
-    });
-</script>
-<style>
+﻿<style>
     #subredditSorter {
         list-style-type: none;
         margin: 0;
         padding: 0;
         max-width: 500px;
-        max-height: 450px;
+        height: 80vh;
         overflow-y: scroll;
         overflow-x: hidden;
+        background-color: lightgray;
     }
 
         #subredditSorter li {
@@ -34,16 +29,42 @@
 
 @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <ul id="subredditSorter" style="list-style-type: none" class="ui-sortable">
+    <div>
+        <h1>Reddit Masstagger 2.0</h1>
+        <p>
+            Use the list to the left to sort and customize your subreddit filter. Higher subreddits will be
+            prioritized in the case that a user is tagged in multiple subreddits. Choose ignore to block all
+            posts and comments by users of that subreddit
+        </p>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <input type="file" , name="JsonFile" />
+            <input type="submit" value="OK" />
+        </div>
+        <div class="col-lg-6">
+            <div>
+                <ul id="subredditSorter" style="list-style-type: none" class="ui-sortable">
 
-        @foreach (MassTagger2.Models.ViewModels.SubredditViewModel subreddit in Model.Subreddits)
-        {
-            Html.RenderPartial("_SubredditSorter", subreddit);
-        }
-    </ul>
-
-    <input type="file" , name="JsonFile" />
-    <input type="submit" value="OK" />
+                    @foreach (MassTagger2.Models.ViewModels.SubredditViewModel subreddit in Model.Subreddits)
+                    {
+                        Html.RenderPartial("_SubredditSorter", subreddit);
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
 }
+
+<script>
+    $(function () {
+        $("#subredditSorter").sortable();
+        $("#subredditSorter").disableSelection();
+    });
+
+    $(".removeRow").click(function () {
+        $(this).parent().parent().parent().remove();
+    })
+</script>
 
 <!-- /ko -->
